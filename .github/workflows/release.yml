@@ -28,14 +28,12 @@ jobs:
 
       - name: Prepare build files
         run: |
-          # 解码base64编码的keystore文件
-          echo "${{ secrets.KEY_BASE64 }}" | base64 -d > app/app.key
-          
-          # 写入签名配置到local.properties
-          echo "${{ secrets.SIGNING_CONFIG }}" > local.properties
-          
-          # 写入Google Services配置
-          echo '${{ secrets.GOOGLE_SERVICES_JSON }}' > app/google-services.json
+          echo "google-services.json is in the repo already"
+          # Use debug signing (no secrets needed)
+          echo "RELEASE_STORE_FILE=debug.keystore" > local.properties
+          echo "RELEASE_STORE_PASSWORD=android" >> local.properties
+          echo "RELEASE_KEY_ALIAS=androiddebugkey" >> local.properties
+          echo "RELEASE_KEY_PASSWORD=android" >> local.properties
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
