@@ -1,4 +1,4 @@
-package me.rerere.zhi.tools
+package me.rerere.rikkahub.data.ai.mcp.tools
 
 /**
  * 📱 手机端 MCP 工具集 — 之之AI伴侣的"身体能力"
